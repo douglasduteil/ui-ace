@@ -1,35 +1,38 @@
+define(['module', 'root'], function (module, root) {
 
-define(['module'],function (module) {
+  var _, dfd, e$;
 
-  console.log(module);
-  console.log(module.config());
-  //require(['/modules/directives/ui-codemirror/ui-codemirror.js', 'http://codemirror.net/lib/codemirror.js']);
+  _ = root[module.id] || "";
+  dfd = new $.Deferred();
 
-  /*
-   angular.module('doc.ui-ace', ['ui.ace'])
-   .controller('DocCtrl', ['$scope', function($scope){
-   $scope.aceModel = "Ace Hello World";
-   }])
-   ;
   requirejs(
     {
-      paths :  {
-        'ui.codemirror' : root + 'ui-codemirror'
+      paths: {
+        'ui.ace': _ + "ui-ace"
       },
-      shim : {
-        'ui.codemirror' : { deps: ['http://codemirror.net/lib/codemirror.js'] }
+      shim: {
+        'ui.ace': { deps: ['https://rawgithub.com/ajaxorg/ace-builds/v1.0.0/src-min-noconflict/ace.js'] }
       }
     },
-    ['ui.codemirror'],
-    function(){
+    ['ui.ace'],
+    function () {
 
-      angular.module('doc.codeMirror', ['ui.codemirror'])
-        .controller('DocCtrl', ['$scope', function($scope){
-          $scope.codeMirrorModel = "Hello";
+      angular.module('doc.ui-ace', ['ui.ace', 'prettifyDirective'])
+        .controller('DocCtrl', ['$scope', function ($scope) {
+          $scope.aceModel = "Ace Hello World";
         }])
       ;
+      e$ = $("#directives-ui-ace");
+      e$.removeAttr("ng-non-bindable");
 
+      angular.bootstrap(e$[0], ['doc.ui-ace']);
+
+      dfd.resolve();
 
     }
-  );  */
+  );
+
+
+  return dfd.promise();
+
 });
