@@ -10,10 +10,11 @@
 </style>
 <script>
 
+  $("#ace").hide();
   requirejs(
       {
         paths: {
-          'ui.ace': "build/angular-ui-ace"
+          'ui.ace': "build/angular-ui-ace.min"
         },
         shim: {
           'ui.ace': { deps: ['https://rawgithub.com/ajaxorg/ace-builds/v1.0.0/src-min-noconflict/ace.js'] }
@@ -27,35 +28,50 @@
               $scope.aceModel = "Ace Hello World";
             }])
         ;
-        e$ = $("#directives-ui-ace");
+        e$ = $("#ace");
         e$.removeAttr("ng-non-bindable");
 
         angular.bootstrap(e$[0], ['doc.ui-ace']);
+        e$.show();
+        $("#ace-l").slideUp();
 
-        dfd.resolve();
 
       }
   );
 </script>
-<section id="ace"  ng-non-bindable>
-<div ui-ace>Hello</div>
-<div ui-ace>World</div>
+
+<!-- Le loading
+================================================== -->
+
+<div id="ace-l" class="loadingAnimation" >
+  <div class="bowl_ringG">
+    <div class="ball_holderG">
+      <div class="ballG">
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="ace"  ng-non-bindable ng-controller="DocCtrl" >
+
+    <div ui-ace ng-model="aceModel">Hello</div>
+    <div ui-ace>World</div>
 
 
-  <h3>How?</h3>
-<pre class="prettyprint">
-&lt;div ui-ace&gt;Hello&lt;/div&gt;
-&lt;div ui-ace&gt;World&lt;/div&gt;
+      <h3>How?</h3>
+    <pre class="prettyprint">
+    &lt;div ui-ace  ng-model="aceModel"&gt;Hello&lt;/div&gt;
+    &lt;div ui-ace&gt;World&lt;/div&gt;
 
-&lt;style&gt;
-  .ace_editor_wrapper { position : relative; height: 200px}
+    &lt;style&gt;
+      .ace_editor_wrapper { position : relative; height: 200px}
 
-  .ace_editor {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;;
-  }
-&lt;/style&gt;
-</pre>
+      .ace_editor {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;;
+      }
+    &lt;/style&gt;
+    </pre>
 </section>

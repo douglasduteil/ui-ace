@@ -57,7 +57,7 @@ module.exports = function (grunt) {
     copy: {
       main: {
         files: [
-          {src: ['demo/demo.html'], dest: 'doc/demo.html', filter: 'isFile'}
+          {src: ['demo/demo.html'], dest: 'doc/demos.html', filter: 'isFile'}
           ]
       }
     }
