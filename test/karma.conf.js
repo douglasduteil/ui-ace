@@ -13,7 +13,7 @@ files = [
   'components/angular/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/ace-builds/src-min-noconflict/ace.js',
-  'ui-ace.js',
+  'angular-ui-ace.js',
   'test/*.spec.js'
 ];
 

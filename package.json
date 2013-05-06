@@ -5,12 +5,14 @@
   "author": "https://github.com/angular-ui/ui-ace/graphs/contributors",
   "license": "MIT",
   "homepage": "http://angular-ui.github.com",
-  "main": "./ui-ace.js",
+  "main": "./angular-ui-ace.js",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-karma": "~0.4.x",
-    "grunt-contrib-jshint": "~0.2.0"
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-copy": "~0.4.1"
   },
   "scripts": {},
   "repository": {
