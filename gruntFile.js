@@ -29,7 +29,11 @@ module.exports = function (grunt) {
         ' * @license <%= pkg.license %>',
         ' */',
         ''].join('\n'),
-      destName : 'doc/build/<%= pkg.name %>'
+      destName : 'doc/build/<%= pkg.name %>',
+      view : {
+        humaName : "UI Ace",
+        repoName : "ui-ace"
+      }
     },
     jshint:{
       files:['<%= pkg.name %>.js', 'test/**/*.js', 'demo/**/*.js'],
@@ -59,6 +63,14 @@ module.exports = function (grunt) {
         files: [
           {src: ['demo/demo.html'], dest: 'doc/demos.html', filter: 'isFile'}
           ]
+      },
+      template : {
+        options : {processContent : (function(content){
+          return grunt.template.process(content);
+        })},
+        files: [
+          {src: ['doc/.tmpl/index.tmpl'], dest: 'doc/index.html'}
+        ]
       }
     }
   });
