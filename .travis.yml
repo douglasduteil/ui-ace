@@ -8,9 +8,15 @@ before_install:
 - npm install -g bower grunt-cli
 - npm install
 - bower install
+before_script: doc/.travis/before_script.sh
+after_success: doc/.travis/after_success.sh
+branches:
+  only:
+  - ft-doc-t0
 script: grunt
 env:
   global:
+  - REPO="git@github.com:douglasduteil/ui-ace.git"
   - secure: ! 'QPY/XpPLBXpC1rAZKov4rgTjuLk7tQGU7XAaU1Vy7aCeBugevANIbJWmLVqM
 
       wmVRnb0XccZJa6CZqwYEMC6Zkz7AGk9kORkih1TNySwaY/YL84HYHeUlN5kl
