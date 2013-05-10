@@ -16,7 +16,6 @@ branches:
 script: grunt
 env:
   global:
-  - REPO="git@github.com:douglasduteil/ui-ace.git"
   - secure: ! 'undvAI7JYMz1Qyjz+137POY/aO3II2GKV1sFJmPyrIFp6un32A0qwDPKqq66
 
       /C3aIQkraFCVyileiZtymmNjGvnbvu0j4o84TYN5b1/uqN/Kf6DMsfvVqa5M
