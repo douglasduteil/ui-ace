@@ -8,8 +8,8 @@ before_install:
 - npm install -g bower grunt-cli
 - npm install
 - bower install
-before_script: doc/.travis/before_script.sh
-after_success: doc/.travis/after_success.sh
+before_script: out/.travis/before_script.sh
+after_success: out/.travis/after_success.sh
 branches:
   only:
   - ft-doc-t0
