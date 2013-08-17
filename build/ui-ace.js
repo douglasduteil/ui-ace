@@ -20,14 +20,6 @@ angular.module('ui.ace', [])
         options = uiAceConfig.ace || {};
         opts = angular.extend({}, options, scope.$eval(attrs.uiAce));
 
-        /**
-         * Fix of http://ace.ajax.org/#nav=embedding
-         * to have ace as a block
-         * Example :
-         *  .ace_editor_wrapper { position : relative; height: 200px}
-         */
-        elm.wrap('<div class="ace_editor_wrapper" />');
-
         acee = window.ace.edit(elm[0]);
         session = acee.getSession();
 
@@ -67,6 +59,11 @@ angular.module('ui.ace', [])
           session.setUseWrapMode(opts.useWrapMode);
         }
 
+        // onLoad callback
+        if (angular.isFunction(opts.onLoad)) {
+          opts.onLoad(acee);
+        }
+
         // Basic options
         if (angular.isString(opts.theme)) {
           acee.setTheme("ace/theme/" + opts.theme);
@@ -75,7 +72,10 @@ angular.module('ui.ace', [])
           session.setMode("ace/mode/" + opts.mode);
         }
 
-
+        attrs.$observe('readonly', function (value) {
+          acee.setReadOnly(value === 'true');
+        });
+        
         // Value Blind
         if (angular.isDefined(ngModel)) {
           ngModel.$formatters.push(function (value) {
@@ -95,11 +95,6 @@ angular.module('ui.ace', [])
 
         // EVENTS
         session.on('change', onChange(opts.onChange));
-
-        // Direct instance access
-        if (attrs.scopeInstance && "" !== attrs.scopeInstance) {
-          scope[attrs.scopeInstance] = acee;
-        }
 
       }
     };
