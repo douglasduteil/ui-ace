@@ -54,7 +54,7 @@
           <p class="btn-group">
               <a class="btn" href="https://github.com/angular-ui/ui-ace"><i class="icon-github"></i> Code on Github</a>
               <a class="btn btn-primary" href="https://github.com/angular-ui/ui-ace/tree/gh-pages/build">
-                  <i class="icon-download-alt icon-white"></i> Download <small>(0.0.4)</small>
+                  <i class="icon-download-alt icon-white"></i> Download <small>(0.0.5)</small>
               </a>
           </p>
       </div>
@@ -302,6 +302,7 @@ vendor_js=['https://rawgithub.com/ajaxorg/ace-builds/v1.1.1/src-min-noconflict/a
 
 </section>
 
+
   </div>
 
   <!-- Le javascript
@@ -321,7 +322,9 @@ vendor_js=['https://rawgithub.com/ajaxorg/ace-builds/v1.1.1/src-min-noconflict/a
   <script src="build/ui-ace.min.js" type="text/javascript" charset="utf-8"></script>
 
   <script>
-    angular.module('doc.ui-ace', ['ui.ace', 'prettifyDirective', 'ui.bootstrap', 'plunker'])
+    'use strict';
+
+angular.module('doc.ui-ace', ['ui.ace', 'prettifyDirective', 'ui.bootstrap', 'plunker'])
   .controller('AceCtrl', ['$scope', function ($scope) {
 
     // The modes
@@ -336,7 +339,7 @@ vendor_js=['https://rawgithub.com/ajaxorg/ace-builds/v1.1.1/src-min-noconflict/a
 
         // HACK to have the ace instance in the scope...
         $scope.modeChanged = function () {
-          _ace.getSession().setMode("ace/mode/" + $scope.mode.toLowerCase());
+          _ace.getSession().setMode('ace/mode/' + $scope.mode.toLowerCase());
         };
 
       }
@@ -352,6 +355,7 @@ vendor_js=['https://rawgithub.com/ajaxorg/ace-builds/v1.1.1/src-min-noconflict/a
 
   }])
 ;
+
   </script>
 
 </body>
